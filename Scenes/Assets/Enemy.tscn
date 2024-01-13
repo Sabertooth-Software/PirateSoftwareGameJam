@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1onltmgemks3"]
+
+[ext_resource type="PackedScene" uid="uid://we1h5btvojlm" path="res://3DGodotRobot.glb" id="1_63lko"]
+
+[node name="Node3D" type="CharacterBody3D"]
+
+[node name="3DGodotRobot" parent="." instance=ExtResource("1_63lko")]
