@@ -1,13 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://c5re31xjl8upn"]
+[gd_scene load_steps=5 format=3 uid="uid://oesccaq1qi08"]
 
-[ext_resource type="Script" path="res://Scripts/Player/movement.gd" id="1_pdcwq"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/player.gd" id="1_yw8a6"]
 [ext_resource type="PackedScene" uid="uid://d2ykqni5ibx7r" path="res://Scenes/Assets/player_robot.tscn" id="2_wg5hr"]
+[ext_resource type="PackedScene" uid="uid://850fd88c0xc7" path="res://Scenes/Assets/player_state_machine.tscn" id="2_wiitn"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x3ata"]
 height = 1.75
 
 [node name="Player" type="CharacterBody3D"]
-script = ExtResource("1_pdcwq")
+script = ExtResource("1_yw8a6")
+
+[node name="StateMachine" parent="." node_paths=PackedStringArray("player", "animation_player") instance=ExtResource("2_wiitn")]
+transform = Transform3D(-1, 3.48787e-16, -8.74228e-08, 3.48787e-16, 1, -3.48787e-16, 8.74228e-08, -3.48787e-16, -1, 0, 0, 0)
+player = NodePath("..")
+animation_player = NodePath("../Robot/AnimationPlayer")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.835422, 2.08165e-12)
@@ -15,3 +21,23 @@ shape = SubResource("CapsuleShape3D_x3ata")
 
 [node name="Robot" parent="." instance=ExtResource("2_wg5hr")]
 transform = Transform3D(-1, 3.48787e-16, -8.74228e-08, 3.48787e-16, 1, -3.48787e-16, 8.74228e-08, -3.48787e-16, -1, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Robot/RobotArmature" index="0"]
+bones/0/position = Vector3(8.26265e-18, 0.90683, 0.0298551)
+bones/1/rotation = Quaternion(0.0294489, -1.52167e-14, 7.02117e-09, 0.999566)
+bones/4/position = Vector3(-2.88374e-16, 0.176079, -0.0108779)
+bones/4/rotation = Quaternion(0.223009, -1.16207e-07, -2.65847e-08, 0.974816)
+bones/9/rotation = Quaternion(-0.505315, -0.477247, -0.50418, 0.512538)
+bones/10/rotation = Quaternion(0.20515, 0.713894, 0.184025, 0.643742)
+bones/11/rotation = Quaternion(-0.0175777, -0.091351, 0.0271132, 0.995294)
+bones/13/rotation = Quaternion(-0.505315, 0.477247, 0.50418, 0.512538)
+bones/14/rotation = Quaternion(0.200362, -0.71543, -0.178619, 0.645066)
+bones/15/rotation = Quaternion(-0.0175777, 0.091351, -0.0271132, 0.995294)
+bones/17/rotation = Quaternion(0.866667, 0.0159147, -0.0146238, 0.498419)
+bones/18/rotation = Quaternion(0.78176, 0.0151238, 0.0133709, 0.623253)
+bones/19/rotation = Quaternion(-0.615735, 0.00335742, -0.00475978, 0.787932)
+bones/21/rotation = Quaternion(0.985203, -0.0200071, 0.00831732, 0.170019)
+bones/22/rotation = Quaternion(-0.00618428, -0.00495338, -0.0269892, 0.999604)
+bones/23/rotation = Quaternion(-0.615735, -0.00335744, 0.00475984, 0.787932)
+
+[editable path="Robot"]

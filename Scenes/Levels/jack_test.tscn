@@ -1,8 +1,12 @@
 [gd_scene load_steps=7 format=3 uid="uid://djnnq0l712rt6"]
 
-[ext_resource type="PackedScene" uid="uid://c5re31xjl8upn" path="res://Scenes/Assets/player.tscn" id="1_0oaab"]
+[ext_resource type="PackedScene" uid="uid://oesccaq1qi08" path="res://Scenes/Assets/player.tscn" id="1_0oaab"]
 [ext_resource type="PackedScene" uid="uid://bu0q8gn2lqmv" path="res://Scenes/Assets/floor.tscn" id="2_0lt3j"]
 [ext_resource type="PackedScene" uid="uid://bf1hmwqav41ny" path="res://Scenes/Assets/wall.tscn" id="2_2hiom"]
+
+[sub_resource type="Environment" id="Environment_nfybc"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_fn84y"]
 
 [sub_resource type="Environment" id="Environment_luauu"]
 ssr_enabled = true
@@ -13,21 +17,14 @@ glow_enabled = true
 fog_enabled = true
 volumetric_fog_enabled = true
 
-[sub_resource type="Environment" id="Environment_nfybc"]
-
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_fn84y"]
-
 [node name="Jack_Test" type="Node3D"]
 
 [node name="Floor2" parent="." instance=ExtResource("2_0lt3j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 20, 2.08165e-12)
 
 [node name="Player" parent="." instance=ExtResource("1_0oaab")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.278471, 2.73344, 0.816866)
-
-[node name="Camera3D" type="Camera3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 0.943281, 0.331997, 0, -0.331997, 0.943281, 0, 1.49527, 2.84008)
-environment = SubResource("Environment_luauu")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.278471, 4.76813, 0.816866)
+SPEED = 10.0
 
 [node name="Floor" parent="." instance=ExtResource("2_0lt3j")]
 
@@ -51,3 +48,7 @@ transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.69185, 0)
 light_energy = 16.0
 shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.943281, 0.331997, 0, -0.331997, 0.943281, 0.278471, 10.2727, 7.13335)
+environment = SubResource("Environment_luauu")
