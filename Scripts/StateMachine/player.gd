@@ -15,7 +15,7 @@ var player: Node3D
 @export var HEALTH: float
 @export var acceleration: float
 
-var mouse_sens = 0.01
+var mouse_sens = 0.005
 var health: float
 
 var health_percentage = 1

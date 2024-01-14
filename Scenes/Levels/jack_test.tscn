@@ -1,26 +1,28 @@
-[gd_scene load_steps=6 format=3 uid="uid://djnnq0l712rt6"]
+[gd_scene load_steps=5 format=3 uid="uid://djnnq0l712rt6"]
 
 [ext_resource type="PackedScene" uid="uid://oesccaq1qi08" path="res://Scenes/Assets/player.tscn" id="1_0oaab"]
 [ext_resource type="PackedScene" uid="uid://bu0q8gn2lqmv" path="res://Scenes/Assets/floor.tscn" id="2_0lt3j"]
 [ext_resource type="PackedScene" uid="uid://bf1hmwqav41ny" path="res://Scenes/Assets/wall.tscn" id="2_2hiom"]
 
-[sub_resource type="Environment" id="Environment_nfybc"]
-
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_fn84y"]
+[sub_resource type="Environment" id="Environment_cp5jl"]
+background_mode = 1
+background_energy_multiplier = 16.0
+ssr_enabled = true
+glow_enabled = true
+fog_light_color = Color(0, 0, 0, 1)
+volumetric_fog_enabled = true
+volumetric_fog_albedo = Color(0.0941176, 0.0941176, 0.0941176, 1)
 
 [node name="Jack_Test" type="Node3D"]
 
 [node name="Floor2" parent="." instance=ExtResource("2_0lt3j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 20, 2.08165e-12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 20, 2.08165e-12)
 
 [node name="Player" parent="." instance=ExtResource("1_0oaab")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.278471, 4.76813, 0.816866)
 
 [node name="Floor" parent="." instance=ExtResource("2_0lt3j")]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_nfybc")
-camera_attributes = SubResource("CameraAttributesPractical_fn84y")
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 
 [node name="Wall" parent="." instance=ExtResource("2_2hiom")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 10, -15)
@@ -32,11 +34,33 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 10, 15)
 transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -1, 3.48787e-16, -4.37114e-08, 15, 10, 2.08165e-12)
 
 [node name="Wall3" parent="." instance=ExtResource("2_2hiom")]
-transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -1, 3.48787e-16, -4.37114e-08, -15, 10, 2.08165e-12)
+transform = Transform3D(1, -3.48787e-16, 1.41026e-07, 3.48787e-16, 1, -3.48787e-16, -1.41026e-07, 3.48787e-16, 1, -15, 10, 2.08165e-12)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.31338, -5.0529)
 light_color = Color(1, 0.25098, 1, 1)
 light_energy = 15.0
 shadow_enabled = true
-omni_range = 7.937
+omni_range = 40.0
+omni_attenuation = 2.2974
+
+[node name="Wall5" parent="." instance=ExtResource("2_2hiom")]
+transform = Transform3D(1, -1.04636e-15, 4.23078e-07, 1.04636e-15, 1, -1.04636e-15, -4.23078e-07, 1.04636e-15, 1, -30, 10, 15)
+
+[node name="Wall6" parent="." instance=ExtResource("2_2hiom")]
+transform = Transform3D(1, -6.97574e-16, 2.82052e-07, 6.97574e-16, 1, -6.97574e-16, -2.82052e-07, 6.97574e-16, 1, -30, 10, -15)
+
+[node name="Floor3" parent="." instance=ExtResource("2_0lt3j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.1633e-12, 40, 4.1633e-12)
+
+[node name="Wall7" parent="." instance=ExtResource("2_2hiom")]
+transform = Transform3D(8.02445e-07, -2.09272e-15, -1, 2.09272e-15, 1, -2.09272e-15, 1, -2.09272e-15, 8.02445e-07, -45.1, 10, 0.300014)
+
+[node name="Floor4" parent="." instance=ExtResource("2_0lt3j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_cp5jl")
+
+[editable path="Player"]
+[editable path="Player/Robot"]
