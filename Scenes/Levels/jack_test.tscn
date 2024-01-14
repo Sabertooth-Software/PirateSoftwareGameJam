@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://djnnq0l712rt6"]
+[gd_scene load_steps=6 format=3 uid="uid://djnnq0l712rt6"]
 
 [ext_resource type="PackedScene" uid="uid://oesccaq1qi08" path="res://Scenes/Assets/player.tscn" id="1_0oaab"]
 [ext_resource type="PackedScene" uid="uid://bu0q8gn2lqmv" path="res://Scenes/Assets/floor.tscn" id="2_0lt3j"]
@@ -7,15 +7,6 @@
 [sub_resource type="Environment" id="Environment_nfybc"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_fn84y"]
-
-[sub_resource type="Environment" id="Environment_luauu"]
-ssr_enabled = true
-ssao_enabled = true
-ssil_enabled = true
-sdfgi_enabled = true
-glow_enabled = true
-fog_enabled = true
-volumetric_fog_enabled = true
 
 [node name="Jack_Test" type="Node3D"]
 
@@ -49,7 +40,3 @@ light_color = Color(1, 0.25098, 1, 1)
 light_energy = 15.0
 shadow_enabled = true
 omni_range = 7.937
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.943281, 0.331997, 0, -0.331997, 0.943281, 0.278471, 10.2727, 7.13335)
-environment = SubResource("Environment_luauu")

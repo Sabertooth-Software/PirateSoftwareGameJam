@@ -13,7 +13,6 @@ func enter():
 
 func physics_update(delta):
 	super.physics_update(delta)
-	print_debug(direction)
 	if direction:
 		player.velocity.x = direction.x * player.SPEED
 		player.velocity.z = direction.z * player.SPEED
