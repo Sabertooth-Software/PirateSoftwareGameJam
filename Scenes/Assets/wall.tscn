@@ -1,6 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://bf1hmwqav41ny"]
+[gd_scene load_steps=4 format=3 uid="uid://bf1hmwqav41ny"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_us030"]
+albedo_color = Color(0, 0, 0, 1)
+refraction_enabled = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_enai7"]
+material = SubResource("StandardMaterial3D_us030")
 size = Vector3(30, 20, 0.2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_okg8b"]
