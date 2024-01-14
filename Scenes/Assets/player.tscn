@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://oesccaq1qi08"]
+[gd_scene load_steps=6 format=3 uid="uid://oesccaq1qi08"]
 
 [ext_resource type="Script" path="res://Scripts/StateMachine/player.gd" id="1_yw8a6"]
+[ext_resource type="PackedScene" uid="uid://c3t1lql3ko31b" path="res://glowing_orb.tscn" id="2_4a6bk"]
 [ext_resource type="PackedScene" uid="uid://d2ykqni5ibx7r" path="res://Scenes/Assets/player_robot.tscn" id="2_wg5hr"]
 [ext_resource type="PackedScene" uid="uid://850fd88c0xc7" path="res://Scenes/Assets/player_state_machine.tscn" id="2_wiitn"]
 
@@ -8,20 +9,24 @@
 height = 1.75
 
 [node name="Player" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 3
 script = ExtResource("1_yw8a6")
 SPEED = 10.0
+light = ExtResource("2_4a6bk")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, -4.09353e-16, 3.43488e-16, 3.1384e-16, 0.970152, 0.242498, -4.32503e-16, -0.242498, 0.970152, 2.08165e-12, 1.08688, -0.646212)
 light_color = Color(0.545098, 0.537255, 0, 1)
 light_energy = 13.0
 light_indirect_energy = 5.0
-light_volumetric_fog_energy = 9.667
-light_size = 10.0
+light_volumetric_fog_energy = 5.0
+light_size = 1.0
+light_specular = 2.222
 shadow_enabled = true
 distance_fade_enabled = true
 distance_fade_shadow = 1000.0
-distance_fade_length = 2228.67
+distance_fade_length = 1.0
 spot_range = 30.0
 spot_attenuation = 1.86607
 

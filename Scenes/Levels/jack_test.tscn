@@ -1,25 +1,37 @@
-[gd_scene load_steps=5 format=3 uid="uid://djnnq0l712rt6"]
+[gd_scene load_steps=7 format=3 uid="uid://djnnq0l712rt6"]
 
 [ext_resource type="PackedScene" uid="uid://oesccaq1qi08" path="res://Scenes/Assets/player.tscn" id="1_0oaab"]
+[ext_resource type="PackedScene" uid="uid://c3t1lql3ko31b" path="res://glowing_orb.tscn" id="1_cwiri"]
 [ext_resource type="PackedScene" uid="uid://bu0q8gn2lqmv" path="res://Scenes/Assets/floor.tscn" id="2_0lt3j"]
 [ext_resource type="PackedScene" uid="uid://bf1hmwqav41ny" path="res://Scenes/Assets/wall.tscn" id="2_2hiom"]
+[ext_resource type="PackedScene" uid="uid://we1h5btvojlm" path="res://3DGodotRobot.glb" id="4_br8qg"]
 
 [sub_resource type="Environment" id="Environment_cp5jl"]
 background_mode = 1
-background_energy_multiplier = 16.0
 ssr_enabled = true
 glow_enabled = true
 fog_light_color = Color(0, 0, 0, 1)
 volumetric_fog_enabled = true
-volumetric_fog_albedo = Color(0.0941176, 0.0941176, 0.0941176, 1)
+volumetric_fog_albedo = Color(0.121569, 0.121569, 0.121569, 1)
+volumetric_fog_emission = Color(0.00392157, 0.00392157, 0.00392157, 1)
+volumetric_fog_emission_energy = 2.0
 
 [node name="Jack_Test" type="Node3D"]
+
+[node name="Glowing Orb" parent="." instance=ExtResource("1_cwiri")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.31338, -5.0529)
+
+[node name="3DGodotRobot" parent="." instance=ExtResource("4_br8qg")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -26, 0, -4)
 
 [node name="Floor2" parent="." instance=ExtResource("2_0lt3j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 20, 2.08165e-12)
 
 [node name="Player" parent="." instance=ExtResource("1_0oaab")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.278471, 4.76813, 0.816866)
+
+[node name="SpotLight3D" parent="Player" index="0"]
+visible = false
 
 [node name="Floor" parent="." instance=ExtResource("2_0lt3j")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
@@ -35,14 +47,6 @@ transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-
 
 [node name="Wall3" parent="." instance=ExtResource("2_2hiom")]
 transform = Transform3D(1, -3.48787e-16, 1.41026e-07, 3.48787e-16, 1, -3.48787e-16, -1.41026e-07, 3.48787e-16, 1, -15, 10, 2.08165e-12)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.31338, -5.0529)
-light_color = Color(1, 0.25098, 1, 1)
-light_energy = 15.0
-shadow_enabled = true
-omni_range = 40.0
-omni_attenuation = 2.2974
 
 [node name="Wall5" parent="." instance=ExtResource("2_2hiom")]
 transform = Transform3D(1, -1.04636e-15, 4.23078e-07, 1.04636e-15, 1, -1.04636e-15, -4.23078e-07, 1.04636e-15, 1, -30, 10, 15)

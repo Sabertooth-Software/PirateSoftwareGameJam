@@ -12,6 +12,7 @@ size = Vector3(30, 20, 0.2)
 mesh = SubResource("BoxMesh_enai7")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("BoxShape3D_okg8b")

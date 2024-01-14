@@ -14,6 +14,7 @@ var player: Node3D
 @export var JUMP_VELOCITY: float = 5
 @export var HEALTH: float
 @export var acceleration: float
+@export var light: PackedScene
 
 var mouse_sens = 0.005
 var health: float
@@ -25,6 +26,12 @@ func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _input(event):
+	if event.is_action("light") and event.is_pressed() and !event.is_echo():
+		var orb: GlowingOrb = light.instantiate()
+		var current_scene: Node = get_tree().get_current_scene()
+		current_scene.add_child(orb)
+		add_collision_exception_with(orb)
+		orb.global_position = position
 	if event is InputEventMouseMotion:
 		rotate_y(-event.relative.x * mouse_sens)
 
