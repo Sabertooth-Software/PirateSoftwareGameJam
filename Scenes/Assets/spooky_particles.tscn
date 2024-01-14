@@ -1,0 +1,79 @@
+[gd_scene load_steps=13 format=3 uid="uid://c8gb5kkx4fgo6"]
+
+[sub_resource type="Curve" id="Curve_r58c2"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0.00291121, -268.742), 0.0, 0.0, 0, 0, Vector2(0.973799, 309.517), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_hni1e"]
+curve = SubResource("Curve_r58c2")
+
+[sub_resource type="Curve" id="Curve_6e5mr"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_x3e3a"]
+curve = SubResource("Curve_6e5mr")
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_erv7g"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cqkug"]
+emission_shape_scale = Vector3(30, 10, 30)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = -100.0
+angle_max = 100.0
+angle_curve = SubResource("CurveTexture_hni1e")
+direction = Vector3(1, 1, 1)
+initial_velocity_min = -2.0
+initial_velocity_max = 2.0
+angular_velocity_min = -0.01
+angular_velocity_max = 0.01
+angular_velocity_curve = SubResource("CurveTexture_x3e3a")
+directional_velocity_min = -0.01
+directional_velocity_max = 0.01
+directional_velocity_curve = SubResource("CurveXYZTexture_erv7g")
+gravity = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1devu"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_1uumu"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_k1lhi"]
+noise = SubResource("FastNoiseLite_1uumu")
+
+[sub_resource type="FogMaterial" id="FogMaterial_q8hhh"]
+density = 100.0
+albedo = Color(1, 0, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e7y6p"]
+next_pass = SubResource("FogMaterial_q8hhh")
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.592157, 0, 0.603922, 1)
+emission_enabled = true
+emission = Color(0.721569, 0.109804, 0.721569, 1)
+emission_energy_multiplier = 10000.0
+backlight = Color(1, 0, 0, 1)
+backlight_texture = SubResource("NoiseTexture2D_1devu")
+detail_mask = SubResource("NoiseTexture2D_k1lhi")
+detail_blend_mode = 1
+uv1_scale = Vector3(100, 100, 100)
+uv2_scale = Vector3(100, 100, 100)
+grow_amount = 0.1
+proximity_fade_distance = 0.5
+
+[sub_resource type="BoxMesh" id="BoxMesh_oo8b8"]
+material = SubResource("StandardMaterial3D_e7y6p")
+size = Vector3(0.05, 0.05, 0.05)
+
+[node name="GPUParticles3D" type="GPUParticles3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 5, 2.08165e-12)
+ignore_occlusion_culling = true
+amount = 500
+lifetime = 5.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_cqkug")
+draw_pass_1 = SubResource("BoxMesh_oo8b8")
