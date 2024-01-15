@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://oesccaq1qi08"]
+[gd_scene load_steps=8 format=3 uid="uid://oesccaq1qi08"]
 
-[ext_resource type="Script" path="res://Scripts/StateMachine/player.gd" id="1_yw8a6"]
+[ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_yw8a6"]
 [ext_resource type="PackedScene" uid="uid://c3t1lql3ko31b" path="res://glowing_orb.tscn" id="2_4a6bk"]
 [ext_resource type="PackedScene" uid="uid://d2ykqni5ibx7r" path="res://Scenes/Assets/player_robot.tscn" id="2_wg5hr"]
 [ext_resource type="PackedScene" uid="uid://850fd88c0xc7" path="res://Scenes/Assets/player_state_machine.tscn" id="2_wiitn"]
+[ext_resource type="Script" path="res://Scripts/Player/lighting_component.gd" id="5_kkq2j"]
+[ext_resource type="Script" path="res://Scripts/Player/torch.gd" id="6_rrl6w"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x3ata"]
 height = 1.75
@@ -13,21 +15,6 @@ collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_yw8a6")
 SPEED = 10.0
-light = ExtResource("2_4a6bk")
-
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, -4.09354e-16, 3.43488e-16, 3.1384e-16, 0.970152, 0.242498, -4.32503e-16, -0.242498, 0.970152, 2.08165e-12, 1.08688, -0.646212)
-light_color = Color(0.772549, 0.647059, 0, 1)
-light_energy = 10.0
-light_indirect_energy = 10.0
-light_size = 1.0
-light_specular = 2.222
-shadow_enabled = true
-distance_fade_enabled = true
-distance_fade_shadow = 1000.0
-distance_fade_length = 1.0
-spot_range = 15.0
-spot_attenuation = 1.86607
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("player", "animation_player") instance=ExtResource("2_wiitn")]
 transform = Transform3D(-1, 3.48787e-16, -8.74228e-08, 3.48787e-16, 1, -3.48787e-16, 8.74228e-08, -3.48787e-16, -1, 0, 0, 0)
@@ -42,24 +29,50 @@ shape = SubResource("CapsuleShape3D_x3ata")
 transform = Transform3D(-1, 3.48787e-16, -8.74228e-08, 3.48787e-16, 1, -3.48787e-16, 8.74228e-08, -3.48787e-16, -1, 0, 0, 0)
 
 [node name="Skeleton3D" parent="Robot/RobotArmature" index="0"]
-bones/0/position = Vector3(8.26265e-18, 0.90683, 0.0298551)
-bones/1/rotation = Quaternion(0.0294489, -1.52167e-14, 7.02117e-09, 0.999566)
-bones/4/position = Vector3(-2.88374e-16, 0.176079, -0.0108779)
-bones/4/rotation = Quaternion(0.223009, -1.16207e-07, -2.65847e-08, 0.974816)
-bones/9/rotation = Quaternion(-0.505315, -0.477247, -0.50418, 0.512538)
-bones/10/rotation = Quaternion(0.20515, 0.713894, 0.184025, 0.643742)
+bones/0/position = Vector3(-3.5256e-16, 0.861288, 0.0298551)
+bones/0/rotation = Quaternion(0.0149092, 1.19196e-07, 1.77731e-09, 0.999889)
+bones/1/rotation = Quaternion(0.0294489, -1.52124e-14, 7.02117e-09, 0.999566)
+bones/4/position = Vector3(-3.65722e-16, 0.151501, -0.011741)
+bones/4/rotation = Quaternion(0.00540027, -1.19208e-07, -6.43763e-10, 0.999985)
+bones/5/rotation = Quaternion(0.00821238, -4.94278e-14, -1.95798e-09, 0.999966)
+bones/7/rotation = Quaternion(0.00393964, 1.19208e-07, -4.69641e-10, 0.999992)
+bones/8/position = Vector3(9.97907e-08, 0.0611572, 0.418552)
+bones/9/rotation = Quaternion(-0.523067, -0.457802, -0.521926, 0.49438)
+bones/10/rotation = Quaternion(-0.356441, 0.617847, -0.433107, 0.551029)
 bones/11/rotation = Quaternion(-0.0175777, -0.091351, 0.0271132, 0.995294)
-bones/13/rotation = Quaternion(-0.505315, 0.477247, 0.50418, 0.512538)
-bones/14/rotation = Quaternion(0.200362, -0.71543, -0.178619, 0.645066)
+bones/12/rotation = Quaternion(0.0209349, 0.0170217, -0.0176714, 0.99948)
+bones/13/rotation = Quaternion(-0.523067, 0.457802, 0.521926, 0.49438)
+bones/14/rotation = Quaternion(-0.356441, -0.617847, 0.433107, 0.551029)
 bones/15/rotation = Quaternion(-0.0175777, 0.091351, -0.0271132, 0.995294)
-bones/17/rotation = Quaternion(0.866667, 0.0159147, -0.0146238, 0.498419)
-bones/18/rotation = Quaternion(0.78176, 0.0151238, 0.0133709, 0.623253)
-bones/19/rotation = Quaternion(-0.615735, 0.00335742, -0.00475978, 0.787932)
-bones/21/rotation = Quaternion(0.985203, -0.0200071, 0.00831732, 0.170019)
-bones/22/rotation = Quaternion(-0.00618428, -0.00495338, -0.0269892, 0.999604)
-bones/23/rotation = Quaternion(-0.615735, -0.00335744, 0.00475984, 0.787932)
+bones/16/rotation = Quaternion(0.0209349, -0.0170217, 0.0176714, 0.99948)
+bones/17/rotation = Quaternion(0.991415, 0.0203396, -0.00748625, 0.128945)
+bones/18/rotation = Quaternion(0.249628, 0.00871771, 0.024974, 0.967981)
+bones/19/rotation = Quaternion(-0.608714, 0.00331542, -0.00479121, 0.793369)
+bones/21/rotation = Quaternion(0.991415, -0.0203396, 0.00748626, 0.128945)
+bones/22/rotation = Quaternion(0.249628, -0.00871766, -0.0249741, 0.967981)
+bones/23/rotation = Quaternion(-0.608714, -0.00331544, 0.00479126, 0.793368)
 
 [node name="Camera" type="Camera3D" parent="."]
 transform = Transform3D(1, -4.09353e-16, 3.43488e-16, 3.43488e-16, 0.984808, 0.173648, -4.09353e-16, -0.173648, 0.984808, 2.08165e-12, 2, 2.3)
+
+[node name="AttackingComponent" type="Node3D" parent="."]
+
+[node name="LightingComponent" type="Node3D" parent="."]
+script = ExtResource("5_kkq2j")
+flare = ExtResource("2_4a6bk")
+
+[node name="Torch" type="SpotLight3D" parent="LightingComponent"]
+transform = Transform3D(1, -4.09354e-16, 3.43488e-16, 3.1384e-16, 0.970152, 0.242498, -4.32503e-16, -0.242498, 0.970152, 2.08165e-12, 1.08688, -0.646212)
+light_color = Color(0.772549, 0.647059, 0, 1)
+light_energy = 10.0
+light_size = 1.0
+light_specular = 2.222
+shadow_enabled = true
+distance_fade_enabled = true
+distance_fade_shadow = 1000.0
+distance_fade_length = 1.0
+spot_range = 15.0
+spot_attenuation = 1.86607
+script = ExtResource("6_rrl6w")
 
 [editable path="Robot"]
