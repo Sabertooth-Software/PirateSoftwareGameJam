@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dax5ce71n1j4h"]
+
+[ext_resource type="Script" path="res://Scripts/Player/Components/interact_component.gd" id="1_34a2v"]
+
+[node name="InteractComponent" type="Node3D"]
+script = ExtResource("1_34a2v")
+
+[node name="Sensor" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02873, 0)
+target_position = Vector3(2.08165e-12, 2.08165e-12, -4)
+collision_mask = 8
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false

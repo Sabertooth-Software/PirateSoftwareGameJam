@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbcc1vdifu82i"]
+
+[ext_resource type="Script" path="res://Scripts/UI/interactable_ui.gd" id="1_f5t30"]
+
+[node name="InteractableUI" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_f5t30")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 424.0
+offset_top = 442.0
+offset_right = 603.0
+offset_bottom = 514.0
+color = Color(0.427451, 0.435294, 0.231373, 1)
+
+[node name="Text" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 431.0
+offset_top = 450.0
+offset_right = 596.0
+offset_bottom = 506.0

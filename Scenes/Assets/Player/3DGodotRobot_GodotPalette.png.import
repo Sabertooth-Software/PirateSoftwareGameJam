@@ -2,17 +2,18 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://gna7wys3nx73"
-path.s3tc="res://.godot/imported/lights_and_shadows_spot_projector_example.webp-3517688aa52074c67347215ab83b0686.s3tc.ctex"
+uid="uid://bsfghwdiygf21"
+path.s3tc="res://.godot/imported/3DGodotRobot_GodotPalette.png-751ee28f1e0bc0f554ed80e43fbb3ee3.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={}
 
 [deps]
 
-source_file="res://lights_and_shadows_spot_projector_example.webp"
-dest_files=["res://.godot/imported/lights_and_shadows_spot_projector_example.webp-3517688aa52074c67347215ab83b0686.s3tc.ctex"]
+source_file="res://Scenes/Assets/Player/3DGodotRobot_GodotPalette.png"
+dest_files=["res://.godot/imported/3DGodotRobot_GodotPalette.png-751ee28f1e0bc0f554ed80e43fbb3ee3.s3tc.ctex"]
 
 [params]
 

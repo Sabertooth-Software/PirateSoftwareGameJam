@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b65c40r6al0qi"]
 
-[ext_resource type="Script" path="res://Scenes/Levels/paper_ui.gd" id="1_uena3"]
+[ext_resource type="Script" path="res://Scripts/UI/paper_ui.gd" id="1_uena3"]
 
 [sub_resource type="FontFile" id="FontFile_vvoes"]
 cache/0/16/0/ascent = 0.0

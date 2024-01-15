@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://we1h5btvojlm"
-path="res://.godot/imported/3DGodotRobot.glb-5195e52c76aadc610c2192d3e031fdee.scn"
+path="res://.godot/imported/3DGodotRobot.glb-35c8cd92d608697c0445e32a2c79f6d5.scn"
 
 [deps]
 
-source_file="res://3DGodotRobot.glb"
-dest_files=["res://.godot/imported/3DGodotRobot.glb-5195e52c76aadc610c2192d3e031fdee.scn"]
+source_file="res://Scenes/Assets/Player/3DGodotRobot.glb"
+dest_files=["res://.godot/imported/3DGodotRobot.glb-35c8cd92d608697c0445e32a2c79f6d5.scn"]
 
 [params]
 

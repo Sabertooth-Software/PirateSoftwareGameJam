@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://d2ykqni5ibx7r"]
 
-[ext_resource type="PackedScene" uid="uid://we1h5btvojlm" path="res://3DGodotRobot.glb" id="1_1xbyx"]
+[ext_resource type="PackedScene" uid="uid://we1h5btvojlm" path="res://Scenes/Assets/Player/3DGodotRobot.glb" id="1_1xbyx"]
 
 [node name="3DGodotRobot" instance=ExtResource("1_1xbyx")]
 

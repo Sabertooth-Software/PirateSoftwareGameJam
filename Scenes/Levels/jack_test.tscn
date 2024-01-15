@@ -1,15 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://djnnq0l712rt6"]
+[gd_scene load_steps=10 format=3 uid="uid://djnnq0l712rt6"]
 
-[ext_resource type="PackedScene" uid="uid://oesccaq1qi08" path="res://Scenes/Assets/player.tscn" id="1_0oaab"]
-[ext_resource type="PackedScene" uid="uid://c3t1lql3ko31b" path="res://glowing_orb.tscn" id="1_cwiri"]
-[ext_resource type="PackedScene" uid="uid://bu0q8gn2lqmv" path="res://Scenes/Assets/floor.tscn" id="2_0lt3j"]
-[ext_resource type="PackedScene" uid="uid://bf1hmwqav41ny" path="res://Scenes/Assets/wall.tscn" id="2_2hiom"]
-[ext_resource type="PackedScene" uid="uid://we1h5btvojlm" path="res://3DGodotRobot.glb" id="4_br8qg"]
+[ext_resource type="PackedScene" uid="uid://oesccaq1qi08" path="res://Scenes/Assets/Player/player.tscn" id="1_0oaab"]
+[ext_resource type="PackedScene" uid="uid://c3t1lql3ko31b" path="res://Scenes/Assets/GlowingOrb/glowing_orb.tscn" id="1_cwiri"]
+[ext_resource type="PackedScene" uid="uid://bu0q8gn2lqmv" path="res://Scenes/Assets/Geometry/floor.tscn" id="2_0lt3j"]
+[ext_resource type="PackedScene" uid="uid://bf1hmwqav41ny" path="res://Scenes/Assets/Geometry/wall.tscn" id="2_2hiom"]
+[ext_resource type="PackedScene" uid="uid://we1h5btvojlm" path="res://Scenes/Assets/Player/3DGodotRobot.glb" id="4_br8qg"]
 [ext_resource type="PackedScene" uid="uid://cpw77dbp04j2u" path="res://Scenes/Assets/Components/particle_trigger.tscn" id="6_b4tih"]
-[ext_resource type="Script" path="res://Scenes/Levels/Paper.gd" id="7_3ahn5"]
-[ext_resource type="Script" path="res://Scenes/Levels/interactable_area.gd" id="8_og5cc"]
-[ext_resource type="PackedScene" uid="uid://b65c40r6al0qi" path="res://paper_ui.tscn" id="9_553ta"]
-[ext_resource type="Script" path="res://Scenes/Levels/interactable_ui.gd" id="10_xpro4"]
+[ext_resource type="PackedScene" uid="uid://bvx7h46l477k6" path="res://Scenes/Assets/paper.tscn" id="7_n4mm6"]
+[ext_resource type="PackedScene" uid="uid://br8wib1cosk8a" path="res://Scenes/Assets/UI/gui.tscn" id="8_24imx"]
 
 [sub_resource type="Environment" id="Environment_cp5jl"]
 background_mode = 1
@@ -21,12 +19,6 @@ fog_light_color = Color(0, 0, 0, 1)
 volumetric_fog_enabled = true
 volumetric_fog_albedo = Color(0, 0, 0, 1)
 volumetric_fog_temporal_reprojection_enabled = false
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_enbgr"]
-size = Vector3(2, 6, 2)
-
-[sub_resource type="BoxMesh" id="BoxMesh_6b30t"]
-size = Vector3(2, 6, 2)
 
 [node name="Jack_Test" type="Node3D"]
 
@@ -79,49 +71,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 20, 2.08165e-12)
 
 [node name="ParticleTrigger" parent="." instance=ExtResource("6_b4tih")]
 
-[node name="Paper" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 3, 0)
-script = ExtResource("7_3ahn5")
+[node name="Paper" parent="." instance=ExtResource("7_n4mm6")]
 
-[node name="Area3D" type="Area3D" parent="Paper"]
-collision_layer = 8
-collision_mask = 0
-monitoring = false
-script = ExtResource("8_og5cc")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Paper/Area3D"]
-shape = SubResource("BoxShape3D_enbgr")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Paper"]
-mesh = SubResource("BoxMesh_6b30t")
-
-[node name="GUI" type="CanvasLayer" parent="."]
-
-[node name="PaperUI" parent="GUI" instance=ExtResource("9_553ta")]
-visible = false
-
-[node name="InteractableUI" type="Control" parent="GUI"]
-visible = false
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("10_xpro4")
-
-[node name="ColorRect" type="ColorRect" parent="GUI/InteractableUI"]
-layout_mode = 0
-offset_left = 424.0
-offset_top = 442.0
-offset_right = 603.0
-offset_bottom = 514.0
-color = Color(0.427451, 0.435294, 0.231373, 1)
-
-[node name="Text" type="RichTextLabel" parent="GUI/InteractableUI"]
-layout_mode = 0
-offset_left = 431.0
-offset_top = 450.0
-offset_right = 596.0
-offset_bottom = 506.0
+[node name="GUI" parent="." instance=ExtResource("8_24imx")]
 
 [editable path="Player"]
 [editable path="Player/Robot"]

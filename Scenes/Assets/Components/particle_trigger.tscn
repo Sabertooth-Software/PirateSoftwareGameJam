@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cpw77dbp04j2u"]
 
 [ext_resource type="Script" path="res://Scripts/entrance.gd" id="1_eltnj"]
-[ext_resource type="PackedScene" uid="uid://c8gb5kkx4fgo6" path="res://Scenes/Assets/spooky_particles.tscn" id="2_h1fj7"]
+[ext_resource type="PackedScene" uid="uid://c8gb5kkx4fgo6" path="res://Scenes/Assets/Effects/spooky_particles.tscn" id="2_h1fj7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_p3vxp"]
 size = Vector3(10, 10, 10)

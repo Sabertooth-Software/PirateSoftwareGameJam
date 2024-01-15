@@ -17,10 +17,10 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-PlayerActions="*res://player_actions.gd"
-UiActions="*res://ui_actions.gd"
-PaperManager="*res://paper_manager.gd"
-InteractableEvents="*res://interactable_events.gd"
+PlayerActions="*res://Scripts/AutoLoad/player_actions.gd"
+UiActions="*res://Scripts/AutoLoad/ui_actions.gd"
+PaperManager="*res://Scripts/AutoLoad/paper_manager.gd"
+InteractableEvents="*res://Scripts/AutoLoad/interactable_events.gd"
 
 [input]
 

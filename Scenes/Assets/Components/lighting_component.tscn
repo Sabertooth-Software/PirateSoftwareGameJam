@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://boknnm1iaekar"]
 
-[ext_resource type="Script" path="res://Scripts/Player/lighting_component.gd" id="1_bh6vv"]
-[ext_resource type="PackedScene" uid="uid://c3t1lql3ko31b" path="res://glowing_orb.tscn" id="2_i41hi"]
-[ext_resource type="Script" path="res://Scripts/Player/torch.gd" id="3_20c1m"]
+[ext_resource type="Script" path="res://Scripts/Player/Components/lighting_component.gd" id="1_bh6vv"]
+[ext_resource type="PackedScene" uid="uid://c3t1lql3ko31b" path="res://Scenes/Assets/GlowingOrb/glowing_orb.tscn" id="2_i41hi"]
+[ext_resource type="Script" path="res://Scripts/Assets/torch.gd" id="3_20c1m"]
 
 [node name="LightingComponent" type="Node3D"]
 script = ExtResource("1_bh6vv")
