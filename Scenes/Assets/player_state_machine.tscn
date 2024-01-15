@@ -1,17 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://850fd88c0xc7"]
+[gd_scene load_steps=7 format=3 uid="uid://850fd88c0xc7"]
 
 [ext_resource type="Script" path="res://Scripts/StateMachine/SubStates/player_idle_state.gd" id="1_d6dth"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/player_state_machine.gd" id="1_hsro6"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/SubStates/player_jumping_state.gd" id="2_tbvum"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/SubStates/player_moving_script.gd" id="4_wggxo"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/SuperStates/player_in_air_state.gd" id="5_tuun5"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/SubStates/player_flare_state.gd" id="6_dd8mk"]
 
-[node name="PlayerStateMachine" type="Node3D" node_paths=PackedStringArray("idle", "moving", "jumping", "in_air")]
+[node name="PlayerStateMachine" type="Node3D" node_paths=PackedStringArray("idle", "moving", "jumping", "in_air", "flare")]
 script = ExtResource("1_hsro6")
 idle = NodePath("PlayerIdleState")
 moving = NodePath("PlayerMovingState")
 jumping = NodePath("PlayerJumpingState")
 in_air = NodePath("PlayerInAirState")
+flare = NodePath("PlayerFlareState")
 
 [node name="PlayerIdleState" type="Node" parent="."]
 script = ExtResource("1_d6dth")
@@ -24,3 +26,6 @@ script = ExtResource("4_wggxo")
 
 [node name="PlayerInAirState" type="Node" parent="."]
 script = ExtResource("5_tuun5")
+
+[node name="PlayerFlareState" type="Node" parent="."]
+script = ExtResource("6_dd8mk")
