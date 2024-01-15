@@ -45,4 +45,3 @@ func _process(delta):
 	var direction = (forward * input_dir.y + right * input_dir.x).normalized()
 	input_direction = direction
 	state_machine.state.handle_input(delta)
-
