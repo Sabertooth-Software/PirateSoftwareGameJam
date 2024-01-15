@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://oesccaq1qi08"]
+[gd_scene load_steps=7 format=3 uid="uid://oesccaq1qi08"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_yw8a6"]
-[ext_resource type="PackedScene" uid="uid://c3t1lql3ko31b" path="res://glowing_orb.tscn" id="2_4a6bk"]
 [ext_resource type="PackedScene" uid="uid://d2ykqni5ibx7r" path="res://Scenes/Assets/player_robot.tscn" id="2_wg5hr"]
 [ext_resource type="PackedScene" uid="uid://850fd88c0xc7" path="res://Scenes/Assets/player_state_machine.tscn" id="2_wiitn"]
-[ext_resource type="Script" path="res://Scripts/Player/lighting_component.gd" id="5_kkq2j"]
-[ext_resource type="Script" path="res://Scripts/Player/torch.gd" id="6_rrl6w"]
+[ext_resource type="PackedScene" uid="uid://boknnm1iaekar" path="res://Scenes/Assets/Components/lighting_component.tscn" id="4_dg5lx"]
+[ext_resource type="Script" path="res://Scripts/Player/interact_component.gd" id="5_ynws8"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x3ata"]
 height = 1.75
@@ -57,22 +56,17 @@ transform = Transform3D(1, -4.09353e-16, 3.43488e-16, 3.43488e-16, 0.984808, 0.1
 
 [node name="AttackingComponent" type="Node3D" parent="."]
 
-[node name="LightingComponent" type="Node3D" parent="."]
-script = ExtResource("5_kkq2j")
-flare = ExtResource("2_4a6bk")
+[node name="LightingComponent" parent="." instance=ExtResource("4_dg5lx")]
 
-[node name="Torch" type="SpotLight3D" parent="LightingComponent"]
-transform = Transform3D(1, -4.09354e-16, 3.43488e-16, 3.1384e-16, 0.970152, 0.242498, -4.32503e-16, -0.242498, 0.970152, 2.08165e-12, 1.08688, -0.646212)
-light_color = Color(0.772549, 0.647059, 0, 1)
-light_energy = 10.0
-light_size = 1.0
-light_specular = 2.222
-shadow_enabled = true
-distance_fade_enabled = true
-distance_fade_shadow = 1000.0
-distance_fade_length = 1.0
-spot_range = 15.0
-spot_attenuation = 1.86607
-script = ExtResource("6_rrl6w")
+[node name="InteractComponent" type="Node3D" parent="."]
+script = ExtResource("5_ynws8")
+
+[node name="Sensor" type="RayCast3D" parent="InteractComponent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02873, 0)
+target_position = Vector3(2.08165e-12, 2.08165e-12, -4)
+collision_mask = 8
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false
 
 [editable path="Robot"]
