@@ -2,13 +2,15 @@ extends Node3D
 
 class_name InteractComponent
 
+signal interact(originator: PhysicsBody3D)
+
 @onready var sensor: RayCast3D = $Sensor
 
 var current_interactable: Interactable
 
 func _ready():
 	current_interactable = null
-	PlayerActions.interact.connect(_on_interact)
+	interact.connect(_on_interact)
 	InteractableEvents.change_interactable.connect(_on_change_interactable)
 	
 func _physics_process(_delta):
@@ -20,10 +22,12 @@ func _physics_process(_delta):
 		if current_interactable != null:
 			InteractableEvents.change_interactable.emit(null)
 
-func _on_interact():
+func _on_interact(originator: PhysicsBody3D):
 	if current_interactable != null:
-		current_interactable.interact()
+		PlayerActions.interact.emit()
+		current_interactable.interact(originator)
 		current_interactable = null
 
 func _on_change_interactable(interactable: Interactable):
 	current_interactable = interactable
+

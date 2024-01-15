@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://oesccaq1qi08"]
+[gd_scene load_steps=8 format=3 uid="uid://oesccaq1qi08"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_b4ly6"]
 [ext_resource type="PackedScene" uid="uid://d2ykqni5ibx7r" path="res://Scenes/Assets/Player/player_robot.tscn" id="2_wg5hr"]
 [ext_resource type="PackedScene" uid="uid://850fd88c0xc7" path="res://Scenes/Assets/Player/player_state_machine.tscn" id="2_wiitn"]
 [ext_resource type="PackedScene" uid="uid://boknnm1iaekar" path="res://Scenes/Assets/Components/lighting_component.tscn" id="4_dg5lx"]
+[ext_resource type="Script" path="res://Scripts/Player/Components/attacking_component.gd" id="4_kvab3"]
 [ext_resource type="PackedScene" uid="uid://dax5ce71n1j4h" path="res://Scenes/Assets/Components/interact_component.tscn" id="5_oaefv"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x3ata"]
@@ -54,7 +55,8 @@ bones/23/rotation = Quaternion(-0.608714, -0.00331544, 0.00479126, 0.793368)
 [node name="Camera" type="Camera3D" parent="."]
 transform = Transform3D(1, -4.09353e-16, 3.43488e-16, 3.43488e-16, 0.984808, 0.173648, -4.09353e-16, -0.173648, 0.984808, 2.08165e-12, 2, 2.3)
 
-[node name="AttackingComponent" type="Node3D" parent="."]
+[node name="AttackComponent" type="Node3D" parent="."]
+script = ExtResource("4_kvab3")
 
 [node name="LightingComponent" parent="." instance=ExtResource("4_dg5lx")]
 

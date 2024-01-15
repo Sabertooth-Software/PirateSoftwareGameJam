@@ -6,6 +6,8 @@ signal set_health(percentage: float)
 
 @onready var state_machine: PlayerStateMachine = $StateMachine
 @onready var animations: AnimationPlayer = $Robot/AnimationPlayer
+@onready var lighting_component: LightingComponent = $LightingComponent
+@onready var interact_component: InteractComponent = $InteractComponent
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") 
 var input_direction: Vector3
 var player: Node3D
@@ -33,7 +35,7 @@ func _physics_process(delta):
 	
 func _process(delta):
 	if Input.is_action_just_pressed("torch"):
-		PlayerActions.toggle_torch.emit()
+		lighting_component.toggle_torch.emit()
 	var input_dir: Vector2 = Input.get_vector("left", "right", "up", "down")
 	var forward = global_transform.basis.z
 	var right = global_transform.basis.x

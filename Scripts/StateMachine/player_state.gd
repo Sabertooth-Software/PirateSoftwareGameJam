@@ -2,7 +2,7 @@ extends Node
 class_name PlayerState
 
 var start_time: int
-var player
+var player: Player
 var state_machine: PlayerStateMachine
 var animation: AnimationPlayer
 

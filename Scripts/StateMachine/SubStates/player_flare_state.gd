@@ -8,7 +8,7 @@ func enter():
 	if can_use_flare():
 		self.animation.play("Crouch")
 		await get_tree().create_timer(.1).timeout
-		PlayerActions.send_flare.emit(player.position)		
+		player.lighting_component.use_light_ability.emit(player)
 		await get_tree().create_timer(.3).timeout
 		number_of_flares -= 1
 	is_ability_done = true
