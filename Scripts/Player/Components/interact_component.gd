@@ -23,6 +23,7 @@ func _physics_process(_delta):
 func _on_interact():
 	if current_interactable != null:
 		current_interactable.interact()
+		current_interactable = null
 
 func _on_change_interactable(interactable: Interactable):
 	current_interactable = interactable
