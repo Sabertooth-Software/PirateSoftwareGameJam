@@ -4,8 +4,8 @@
 size = Vector3(30, 0.2, 30)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wxsdc"]
-albedo_color = Color(0, 0, 0, 1)
-refraction_enabled = true
+albedo_color = Color(0.129412, 0.129412, 0.129412, 1)
+backlight = Color(0.168627, 0.168627, 0.168627, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_2yryp"]
 material = SubResource("StandardMaterial3D_wxsdc")

@@ -1,5 +1,7 @@
 extends Node3D
 
+class_name LightingComponent
+
 @export var flare: PackedScene
 @onready var torch: Torch = $Torch
 
