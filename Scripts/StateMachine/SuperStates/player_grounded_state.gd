@@ -9,6 +9,8 @@ func handle_input(delta):
 	super.handle_input(delta)
 	if Input.is_action_just_pressed("jump"):
 		state_machine.change_state(state_machine.jumping)
+	elif Input.is_action_just_pressed("attack"):
+		state_machine.change_state(state_machine.attacking)
 	elif state_machine.flare.can_use_flare() and Input.is_action_just_pressed("flare"):
 		state_machine.change_state(state_machine.flare)
 	elif Input.is_action_just_pressed("interact"):

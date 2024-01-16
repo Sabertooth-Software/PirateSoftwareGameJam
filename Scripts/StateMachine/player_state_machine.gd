@@ -10,6 +10,7 @@ var state: PlayerState
 @export var jumping: PlayerJumpingState
 @export var in_air: PlayerInAirState
 @export var flare: PlayerFlareState
+@export var attacking: PlayerAttackingState
 
 @export var player: Player
 @export var animation_player: AnimationPlayer
