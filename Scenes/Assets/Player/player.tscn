@@ -1,20 +1,29 @@
-[gd_scene load_steps=8 format=3 uid="uid://oesccaq1qi08"]
+[gd_scene load_steps=12 format=3 uid="uid://oesccaq1qi08"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_b4ly6"]
 [ext_resource type="PackedScene" uid="uid://d2ykqni5ibx7r" path="res://Scenes/Assets/Player/player_robot.tscn" id="2_wg5hr"]
 [ext_resource type="PackedScene" uid="uid://850fd88c0xc7" path="res://Scenes/Assets/Player/player_state_machine.tscn" id="2_wiitn"]
 [ext_resource type="PackedScene" uid="uid://boknnm1iaekar" path="res://Scenes/Assets/Components/lighting_component.tscn" id="4_dg5lx"]
 [ext_resource type="Script" path="res://Scripts/Player/Components/attacking_component.gd" id="4_kvab3"]
+[ext_resource type="Script" path="res://Scripts/weapon.gd" id="5_feqoi"]
 [ext_resource type="PackedScene" uid="uid://dax5ce71n1j4h" path="res://Scenes/Assets/Components/interact_component.tscn" id="5_oaefv"]
+[ext_resource type="Script" path="res://Scripts/weapon_hitbox.gd" id="6_0oesg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x3ata"]
 height = 1.75
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_mqy50"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_mtarw"]
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_b4ly6")
 SPEED = 10.0
+JUMP_VELOCITY = null
+HEALTH = null
+acceleration = null
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("player", "animation_player") instance=ExtResource("2_wiitn")]
 transform = Transform3D(-1, 3.48787e-16, -8.74228e-08, 3.48787e-16, 1, -3.48787e-16, 8.74228e-08, -3.48787e-16, -1, 0, 0, 0)
@@ -55,8 +64,28 @@ bones/23/rotation = Quaternion(-0.608714, -0.00331544, 0.00479126, 0.793368)
 [node name="Camera" type="Camera3D" parent="."]
 transform = Transform3D(1, -4.09353e-16, 3.43488e-16, 3.43488e-16, 0.984808, 0.173648, -4.09353e-16, -0.173648, 0.984808, 2.08165e-12, 2, 2.3)
 
-[node name="AttackComponent" type="Node3D" parent="."]
+[node name="AttackComponent" type="Node3D" parent="." node_paths=PackedStringArray("weapon")]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, 1, -2)
 script = ExtResource("4_kvab3")
+weapon = NodePath("Sword")
+
+[node name="Sword" type="Node3D" parent="AttackComponent"]
+script = ExtResource("5_feqoi")
+
+[node name="Hitbox" type="Area3D" parent="AttackComponent/Sword"]
+collision_layer = 16
+collision_mask = 16
+monitoring = false
+monitorable = false
+script = ExtResource("6_0oesg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackComponent/Sword/Hitbox"]
+shape = SubResource("CylinderShape3D_mqy50")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AttackComponent/Sword"]
+layers = 65536
+mesh = SubResource("CylinderMesh_mtarw")
+skeleton = NodePath("../..")
 
 [node name="LightingComponent" parent="." instance=ExtResource("4_dg5lx")]
 

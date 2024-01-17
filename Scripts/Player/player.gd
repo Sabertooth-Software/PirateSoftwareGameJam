@@ -8,6 +8,7 @@ signal set_health(percentage: float)
 @onready var animations: AnimationPlayer = $Robot/AnimationPlayer
 @onready var lighting_component: LightingComponent = $LightingComponent
 @onready var interact_component: InteractComponent = $InteractComponent
+@onready var attack_component: AttackComponent = $AttackComponent
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") 
 var input_direction: Vector3
 var player: Node3D
@@ -42,4 +43,7 @@ func _process(delta):
 	var direction = (forward * input_dir.y + right * input_dir.x).normalized()
 	input_direction = direction
 	state_machine.state.handle_input(delta)
+
+func attack(length: float):
+	attack_component.attack(length)
 
