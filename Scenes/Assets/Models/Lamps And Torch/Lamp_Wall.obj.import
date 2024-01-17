@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://lpa5gbxoujtm"
+path="res://.godot/imported/Lamp_Wall.obj-7adf72cb08f5936fe8e827a0cdd92d25.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Lamp_Wall.obj-7adf72cb08f5936fe8e827a0cdd92d25.mesh"]
+
+source_file="res://Scenes/Assets/Models/Lamps And Torch/Lamp_Wall.obj"
+dest_files=["res://.godot/imported/Lamp_Wall.obj-7adf72cb08f5936fe8e827a0cdd92d25.mesh", "res://.godot/imported/Lamp_Wall.obj-7adf72cb08f5936fe8e827a0cdd92d25.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

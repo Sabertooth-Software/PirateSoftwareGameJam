@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b4gfewyi7n3xs"
+path="res://.godot/imported/Lamp_Ground_Large.obj-ba5600ea54e93a5ba28a617b795ccd79.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Lamp_Ground_Large.obj-ba5600ea54e93a5ba28a617b795ccd79.mesh"]
+
+source_file="res://Scenes/Assets/Models/Lamps And Torch/Lamp_Ground_Large.obj"
+dest_files=["res://.godot/imported/Lamp_Ground_Large.obj-ba5600ea54e93a5ba28a617b795ccd79.mesh", "res://.godot/imported/Lamp_Ground_Large.obj-ba5600ea54e93a5ba28a617b795ccd79.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

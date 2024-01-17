@@ -1,0 +1,85 @@
+[gd_scene load_steps=11 format=3 uid="uid://bacxnk7tvqw0w"]
+
+[ext_resource type="PackedScene" uid="uid://c3t1lql3ko31b" path="res://Scenes/Assets/GlowingOrb/glowing_orb.tscn" id="1_8lbmt"]
+[ext_resource type="PackedScene" uid="uid://we1h5btvojlm" path="res://Scenes/Assets/Player/3DGodotRobot.glb" id="2_klg8w"]
+[ext_resource type="PackedScene" uid="uid://oesccaq1qi08" path="res://Scenes/Assets/Player/player.tscn" id="3_y82dq"]
+[ext_resource type="PackedScene" uid="uid://bf1hmwqav41ny" path="res://Scenes/Assets/Geometry/wall.tscn" id="4_7fdvn"]
+[ext_resource type="PackedScene" uid="uid://bu0q8gn2lqmv" path="res://Scenes/Assets/Geometry/floor.tscn" id="5_uhxv2"]
+[ext_resource type="PackedScene" uid="uid://cpw77dbp04j2u" path="res://Scenes/Assets/Components/particle_trigger.tscn" id="6_u2jv4"]
+[ext_resource type="PackedScene" uid="uid://bvx7h46l477k6" path="res://Scenes/Assets/paper.tscn" id="7_sr03b"]
+[ext_resource type="PackedScene" uid="uid://br8wib1cosk8a" path="res://Scenes/Assets/UI/gui.tscn" id="8_uh44c"]
+[ext_resource type="PackedScene" uid="uid://cvbqpbndiqlh3" path="res://Scenes/Assets/Light.tscn" id="9_svy8w"]
+
+[sub_resource type="Environment" id="Environment_cp5jl"]
+background_mode = 1
+glow_enabled = true
+glow_intensity = 0.4
+glow_blend_mode = 0
+fog_light_color = Color(0, 0, 0, 1)
+volumetric_fog_enabled = true
+volumetric_fog_albedo = Color(0, 0, 0, 1)
+volumetric_fog_temporal_reprojection_enabled = false
+
+[node name="Jack_Test" type="Node3D"]
+
+[node name="Glowing Orb" parent="." instance=ExtResource("1_8lbmt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.31338, -5.0529)
+
+[node name="3DGodotRobot" parent="." instance=ExtResource("2_klg8w")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -26, 0, -4)
+
+[node name="Player" parent="." instance=ExtResource("3_y82dq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.278471, 4.76813, 0.816866)
+
+[node name="InteractComponent" parent="Player" index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_cp5jl")
+
+[node name="Geometry" type="Node3D" parent="."]
+
+[node name="Wall" parent="Geometry" instance=ExtResource("4_7fdvn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 10, -15)
+
+[node name="Wall2" parent="Geometry" instance=ExtResource("4_7fdvn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 10, 15)
+
+[node name="Wall4" parent="Geometry" instance=ExtResource("4_7fdvn")]
+transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -1, 3.48787e-16, -4.37114e-08, 15, 10, 2.08165e-12)
+
+[node name="Wall5" parent="Geometry" instance=ExtResource("4_7fdvn")]
+transform = Transform3D(1, -1.04636e-15, 4.23078e-07, 1.04636e-15, 1, -1.04636e-15, -4.23078e-07, 1.04636e-15, 1, -30, 10, 15)
+
+[node name="Wall6" parent="Geometry" instance=ExtResource("4_7fdvn")]
+transform = Transform3D(1, -6.97574e-16, 2.82052e-07, 6.97574e-16, 1, -6.97574e-16, -2.82052e-07, 6.97574e-16, 1, -30, 10, -15)
+
+[node name="Floor4" parent="Geometry" instance=ExtResource("5_uhxv2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
+
+[node name="Wall7" parent="Geometry" instance=ExtResource("4_7fdvn")]
+transform = Transform3D(8.02445e-07, -2.09272e-15, -1, 2.09272e-15, 1, -2.09272e-15, 1, -2.09272e-15, 8.02445e-07, -45.1, 10, 0.300014)
+
+[node name="Floor3" parent="Geometry" instance=ExtResource("5_uhxv2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.1633e-12, 20, 4.1633e-12)
+
+[node name="Floor" parent="Geometry" instance=ExtResource("5_uhxv2")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+
+[node name="Floor2" parent="Geometry" instance=ExtResource("5_uhxv2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 20, 2.08165e-12)
+
+[node name="ParticleTrigger" parent="." instance=ExtResource("6_u2jv4")]
+
+[node name="Paper" parent="." instance=ExtResource("7_sr03b")]
+
+[node name="GUI" parent="." instance=ExtResource("8_uh44c")]
+
+[node name="Light" parent="." instance=ExtResource("9_svy8w")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.625142, 1.32877, 13.5125)
+
+[node name="Torch2" parent="." instance=ExtResource("9_svy8w")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -6.60539, 1.32877, 13.5125)
+
+[editable path="Player"]
+[editable path="Player/Robot"]
