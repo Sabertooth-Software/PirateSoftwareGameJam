@@ -13,6 +13,8 @@ func _on_change_interactable(interactable: Interactable):
 	if visible:
 		if interactable is Paper:
 			Text.text = "Press E to read"
+		elif interactable is Light:
+			Text.text = "Press E to light"
 
 func _on_interact():
 	visible = false
