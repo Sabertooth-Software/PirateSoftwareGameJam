@@ -6,12 +6,12 @@ var number_of_jumps_left: int = max_jumps
 
 func enter():
 	super.enter()
-	player.velocity.y = player.JUMP_VELOCITY
+	actor.velocity.y = actor.JUMP_VELOCITY
 	number_of_jumps_left -= 1
 	is_ability_done = true;
 	state_machine.in_air.is_jumping = true
 	self.animation.play("Jump")
-	player.move_and_slide()
+	actor.move_and_slide()
 	
 func exit():
 	super.exit()

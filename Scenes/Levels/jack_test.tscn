@@ -1,21 +1,20 @@
-[gd_scene load_steps=14 format=3 uid="uid://djnnq0l712rt6"]
+[gd_scene load_steps=12 format=3 uid="uid://djnnq0l712rt6"]
 
 [ext_resource type="PackedScene" uid="uid://oesccaq1qi08" path="res://Scenes/Assets/Player/player.tscn" id="1_0oaab"]
 [ext_resource type="PackedScene" uid="uid://c3t1lql3ko31b" path="res://Scenes/Assets/GlowingOrb/glowing_orb.tscn" id="1_cwiri"]
 [ext_resource type="PackedScene" uid="uid://bu0q8gn2lqmv" path="res://Scenes/Assets/Geometry/floor.tscn" id="2_0lt3j"]
 [ext_resource type="PackedScene" uid="uid://bf1hmwqav41ny" path="res://Scenes/Assets/Geometry/wall.tscn" id="2_2hiom"]
-[ext_resource type="Script" path="res://Scenes/Assets/Enemy/enemy.gd" id="2_4owg4"]
-[ext_resource type="ArrayMesh" uid="uid://bfo3no827y48d" path="res://Assets/Arachnadroid/Arachnoid.obj" id="3_eblsb"]
-[ext_resource type="Script" path="res://Scripts/Player/Components/health_component.gd" id="4_c4cr3"]
+[ext_resource type="PackedScene" uid="uid://bcx84y7pkne1s" path="res://enemy.tscn" id="2_yi03l"]
 [ext_resource type="PackedScene" uid="uid://cpw77dbp04j2u" path="res://Scenes/Assets/Components/particle_trigger.tscn" id="6_b4tih"]
 [ext_resource type="PackedScene" uid="uid://bvx7h46l477k6" path="res://Scenes/Assets/paper.tscn" id="7_n4mm6"]
 [ext_resource type="PackedScene" uid="uid://br8wib1cosk8a" path="res://Scenes/Assets/UI/gui.tscn" id="8_24imx"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_gm2ug"]
-size = Vector3(2.5, 3.5, 3.5)
+[sub_resource type="NavigationMesh" id="NavigationMesh_gpwcn"]
+vertices = PackedVector3Array(-54.5, 2.5, -24.5, -54.5, 2.5, 24.5, -5.5, 2.5, 24.5, -5.5, 2.5, -24.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_7qve0"]
-size = Vector3(2, 3, 1)
+[sub_resource type="PlaneMesh" id="PlaneMesh_qa8wj"]
+size = Vector2(50, 50)
 
 [sub_resource type="Environment" id="Environment_cp5jl"]
 background_mode = 1
@@ -34,36 +33,18 @@ volumetric_fog_temporal_reprojection_enabled = false
 [node name="Glowing Orb" parent="." instance=ExtResource("1_cwiri")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.31338, -5.0529)
 
-[node name="Enemy" type="CharacterBody3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -26, 3.18938, -4)
-script = ExtResource("2_4owg4")
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_gpwcn")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.069581, -0.142834, 0.10791)
-shape = SubResource("BoxShape3D_gm2ug")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 2, 0)
+mesh = SubResource("PlaneMesh_qa8wj")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Enemy"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
-mesh = ExtResource("3_eblsb")
-
-[node name="HealthComponent" type="Node3D" parent="Enemy" node_paths=PackedStringArray("character")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.3483)
-script = ExtResource("4_c4cr3")
-character = NodePath("..")
-
-[node name="Area3D" type="Area3D" parent="Enemy/HealthComponent"]
-collision_layer = 16
-collision_mask = 16
-monitorable = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy/HealthComponent/Area3D"]
-shape = SubResource("BoxShape3D_7qve0")
+[node name="Enemy" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_yi03l")]
+target = NodePath("../Player")
 
 [node name="Player" parent="." instance=ExtResource("1_0oaab")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.278471, 4.76813, 0.816866)
-JUMP_VELOCITY = 5.0
-HEALTH = 0.0
-acceleration = 0.0
 
 [node name="Camera" parent="Player" index="3"]
 current = true
@@ -112,8 +93,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 20, 2.08165e-12)
 
 [node name="GUI" parent="." instance=ExtResource("8_24imx")]
 
-[connection signal="die" from="Enemy/HealthComponent" to="Enemy" method="_on_health_component_die"]
-[connection signal="area_entered" from="Enemy/HealthComponent/Area3D" to="Enemy/HealthComponent" method="_on_area_entered"]
-
+[editable path="Enemy"]
 [editable path="Player"]
 [editable path="Player/Robot"]
