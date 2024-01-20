@@ -85,4 +85,5 @@ attack={
 3d_physics/layer_2="Character"
 3d_physics/layer_3="Light"
 3d_physics/layer_4="Interactable"
-3d_physics/layer_5="Weapon"
+3d_physics/size/viewport_height=1296
+3d_physics/size/viewport_width=2304

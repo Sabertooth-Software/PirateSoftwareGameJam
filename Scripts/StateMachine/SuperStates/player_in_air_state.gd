@@ -15,23 +15,23 @@ func enter():
 	
 func physics_update(delta):
 	super.physics_update(delta)
-	player.velocity.y -= player.gravity * delta
-	if player.velocity.y < 0:
+	actor.velocity.y -= actor.gravity * delta
+	if actor.velocity.y < 0:
 		state_machine.animation_player.play("Fall")
 	if direction:
-		player.velocity.x = direction.x * player.SPEED
-		player.velocity.z = direction.z * player.SPEED
+		actor.velocity.x = direction.x * actor.SPEED
+		actor.velocity.z = direction.z * actor.SPEED
 	else:
-		player.velocity.x = move_toward(player.velocity.x, 0, player.SPEED)
-		player.velocity.z = move_toward(player.velocity.z, 0, player.SPEED)
+		actor.velocity.x = move_toward(actor.velocity.x, 0, actor.SPEED)
+		actor.velocity.z = move_toward(actor.velocity.z, 0, actor.SPEED)
 	
 	
-	player.move_and_slide()
+	actor.move_and_slide()
 
 func handle_input(delta):
-	direction = player.input_direction
+	direction = actor.input_direction
 	super.handle_input(delta)
-	if player.is_on_floor():
+	if actor.is_on_floor():
 		state_machine.change_state(state_machine.idle)
 	elif Input.is_action_just_pressed("jump") and state_machine.jumping.can_jump():
 		state_machine.change_state(state_machine.jumping)
@@ -43,10 +43,10 @@ func check_jump_multiplier():
 		if !cut_jump:
 			cut_jump = !Input.is_action_pressed("jump") and time_since_jump < 200
 		if cut_jump and 200 < time_since_jump:
-			player.velocity.y = 0
+			actor.velocity.y = 0
 			is_jumping = false
 			cut_jump = false
-		elif player.velocity.y >= 0:
+		elif actor.velocity.y >= 0:
 			is_jumping = false;
 			cut_jump = false;
 			

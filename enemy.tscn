@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://bcx84y7pkne1s"]
+
+[ext_resource type="Script" path="res://Scenes/Assets/Enemy/enemy.gd" id="1_gxjpv"]
+[ext_resource type="Script" path="res://Scripts/Player/Components/health_component.gd" id="2_syu1m"]
+[ext_resource type="ArrayMesh" uid="uid://bfo3no827y48d" path="res://Assets/Arachnadroid/Arachnoid.obj" id="3_gxpjt"]
+[ext_resource type="Script" path="res://enemy_state_machine.gd" id="4_wrjnl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gm2ug"]
+size = Vector3(2.5, 3.5, 3.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7qve0"]
+size = Vector3(2, 3, 1)
+
+[node name="Enemy" type="CharacterBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -26, 3.18938, -4)
+script = ExtResource("1_gxjpv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.069581, -0.142834, 0.10791)
+shape = SubResource("BoxShape3D_gm2ug")
+
+[node name="HealthComponent" type="Node3D" parent="." node_paths=PackedStringArray("character")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.3483)
+script = ExtResource("2_syu1m")
+character = NodePath("..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="HealthComponent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -2.3483)
+mesh = ExtResource("3_gxpjt")
+skeleton = NodePath("../..")
+
+[node name="Area3D" type="Area3D" parent="HealthComponent"]
+collision_layer = 16
+collision_mask = 16
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HealthComponent/Area3D"]
+shape = SubResource("BoxShape3D_7qve0")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+avoidance_enabled = true
+use_3d_avoidance = true
+debug_enabled = true
+
+[node name="PlayerStateMachine" type="Node" parent="."]
+script = ExtResource("4_wrjnl")
+
+[connection signal="die" from="HealthComponent" to="." method="_on_health_component_die"]
+[connection signal="area_entered" from="HealthComponent/Area3D" to="HealthComponent" method="_on_area_entered"]
+[connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
