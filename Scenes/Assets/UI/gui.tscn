@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://br8wib1cosk8a"]
+[gd_scene load_steps=4 format=3 uid="uid://br8wib1cosk8a"]
 
 [ext_resource type="PackedScene" uid="uid://b65c40r6al0qi" path="res://Scenes/Assets/UI/paper_ui.tscn" id="1_ovvy7"]
 [ext_resource type="PackedScene" uid="uid://dbcc1vdifu82i" path="res://Scenes/Assets/UI/interactable_ui.tscn" id="2_mbl80"]
+[ext_resource type="Script" path="res://Scenes/Assets/UI/DarkMeter.gd" id="3_4cp6b"]
 
 [node name="GUI" type="CanvasLayer"]
 
@@ -9,3 +10,17 @@
 visible = false
 
 [node name="InteractableUI" parent="." instance=ExtResource("2_mbl80")]
+
+[node name="VSlider" type="VSlider" parent="."]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -98.0
+offset_top = -110.0
+offset_bottom = 111.0
+grow_horizontal = 0
+grow_vertical = 2
+step = 0.0
+script = ExtResource("3_4cp6b")
