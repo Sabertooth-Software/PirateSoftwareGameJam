@@ -16,11 +16,16 @@ func _changeLight():
 func interact(_originator):
 	Lit = !Lit
 	if Lit == false:
+		DarkTracker.change_on(-1)
 		fireLight.light_energy = 0
 		fireParts.emitting = false;
 	else:
+		DarkTracker.change_on(1)
 		fireLight.light_energy = 2
 		fireParts.emitting = true;
+func _ready():
+	DarkTracker.add_torch(Lit)
+
 func _process(delta):
 	if Lit:
 		lightTics -= delta

@@ -21,6 +21,7 @@ PlayerActions="*res://Scripts/AutoLoad/player_actions.gd"
 UiActions="*res://Scripts/AutoLoad/ui_actions.gd"
 PaperManager="*res://Scripts/AutoLoad/paper_manager.gd"
 InteractableEvents="*res://Scripts/AutoLoad/interactable_events.gd"
+DarkTracker="*res://Scripts/AutoLoad/dark_tracker.gd"
 
 [input]
 
