@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bacxnk7tvqw0w"]
+[gd_scene load_steps=12 format=3 uid="uid://bacxnk7tvqw0w"]
 
 [ext_resource type="PackedScene" uid="uid://c3t1lql3ko31b" path="res://Scenes/Assets/GlowingOrb/glowing_orb.tscn" id="1_8lbmt"]
 [ext_resource type="PackedScene" uid="uid://we1h5btvojlm" path="res://Scenes/Assets/Player/3DGodotRobot.glb" id="2_klg8w"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bvx7h46l477k6" path="res://Scenes/Assets/paper.tscn" id="7_sr03b"]
 [ext_resource type="PackedScene" uid="uid://br8wib1cosk8a" path="res://Scenes/Assets/UI/gui.tscn" id="8_uh44c"]
 [ext_resource type="PackedScene" uid="uid://cvbqpbndiqlh3" path="res://Scenes/Assets/Light.tscn" id="9_svy8w"]
+[ext_resource type="PackedScene" uid="uid://dimxlmrrilihw" path="res://Scenes/Assets/Components/teleport_trigger.tscn" id="10_6oe7j"]
 
 [sub_resource type="Environment" id="Environment_cp5jl"]
 background_mode = 1
@@ -80,6 +81,14 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.625
 
 [node name="Torch2" parent="." instance=ExtResource("9_svy8w")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -6.60539, 1.32877, 13.5125)
+
+[node name="Area3D" parent="." node_paths=PackedStringArray("paired_teleporter") instance=ExtResource("10_6oe7j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.6093, 10.2697, 0.530034)
+paired_teleporter = NodePath("../Area3D2")
+
+[node name="Area3D2" parent="." node_paths=PackedStringArray("paired_teleporter") instance=ExtResource("10_6oe7j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.6093, 10.2697, -12.8785)
+paired_teleporter = NodePath("../Area3D")
 
 [editable path="Player"]
 [editable path="Player/Robot"]
