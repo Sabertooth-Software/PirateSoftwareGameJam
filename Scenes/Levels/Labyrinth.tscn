@@ -20,7 +20,7 @@ volumetric_fog_enabled = true
 volumetric_fog_albedo = Color(0, 0, 0, 1)
 volumetric_fog_temporal_reprojection_enabled = false
 
-[node name="Jack_Test" type="Node3D"]
+[node name="Labyrinth" type="Node3D"]
 
 [node name="Glowing Orb" parent="." instance=ExtResource("1_bluun")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.31338, -5.0529)

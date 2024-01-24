@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dimxlmrrilihw"]
+
+[ext_resource type="Script" path="res://Scenes/Assets/Components/teleport_trigger.gd" id="1_y3rm1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p3vxp"]
+size = Vector3(10, 10, 10)
+
+[node name="Teleport" type="Area3D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_y3rm1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_p3vxp")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
